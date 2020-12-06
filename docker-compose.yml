@@ -31,7 +31,6 @@ services:
       - '${IP}:3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./grafana/provisioning/:/etc/grafana/provisioning/
 
 volumes:
   grafana_data: {}
