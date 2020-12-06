@@ -3,7 +3,7 @@ services:
   telegraf:
     image: telegraf:1.16.3-alpine
     volumes:
-    - ./telegraf/etc/:/etc/telegraf/
+    - ./telegraf/etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     depends_on:
       - influxdb
     links:
@@ -31,6 +31,8 @@ services:
       - '${IP}:3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - ./grafana/dashboards/:/var/lib/grafana/dashboards/
 
 volumes:
   grafana_data: {}
